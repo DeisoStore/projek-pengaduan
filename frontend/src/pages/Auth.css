@@ -1,0 +1,52 @@
+/* File: src/pages/Auth.css */
+
+.auth-container {
+    min-height: calc(100vh - 56px); /* Tinggi viewport dikurangi tinggi navbar */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-image:
+        linear-gradient(rgba(0, 51, 102, 0.8), rgba(0, 51, 102, 0.8)), /* Overlay Biru Bea Cukai */
+        url('../assets/images/background-login.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.auth-card {
+    width: 100%;
+    max-width: 900px;
+    border-radius: 15px;
+    overflow: hidden; /* Agar kolom gambar tidak keluar dari radius */
+    background-color: white;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.auth-form-section {
+    padding: 40px;
+}
+
+.auth-branding-section {
+    background-color: var(--beacukai-blue);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    text-align: center;
+}
+
+.auth-branding-section h2 {
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.auth-branding-section p {
+    color: #e0e0e0;
+}
+
+.auth-switch-link {
+    margin-top: 15px;
+    text-align: center;
+}

@@ -1,0 +1,57 @@
+/* File: src/pages/AdminDashboard.css */
+
+.admin-dashboard {
+    background-color: #f4f7fc; /* Warna latar belakang yang lembut */
+    min-height: 100vh;
+}
+
+.stat-card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    color: white;
+    margin-bottom: 20px;
+    transition: transform 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+}
+
+.stat-card .card-body {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.stat-card-icon {
+    font-size: 3.5rem;
+    opacity: 0.5;
+}
+
+.stat-card-info h5 {
+    font-size: 1rem;
+    font-weight: 300;
+    margin-bottom: 5px;
+}
+
+.stat-card-info h3 {
+    font-size: 2.2rem;
+    font-weight: bold;
+}
+
+/* Definisi Animasi Fade-in */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.content-container {
+    animation: fadeIn 0.5s ease-out;
+}

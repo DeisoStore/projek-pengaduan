@@ -1,0 +1,20 @@
+/* File: src/pages/HomePage.css */
+
+.hero-banner {
+    background: url('https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=2069') no-repeat center center;
+    background-size: cover;
+    padding: 100px 0;
+}
+
+/* --- KODE BARU UNTUK ANIMASI KARTU --- */
+
+/* Menentukan bahwa kartu akan memiliki transisi yang mulus */
+.tentang-kami-card {
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+/* Efek yang terjadi saat cursor mendekat (hover) */
+.tentang-kami-card:hover {
+    transform: translateY(-10px); /* Mengangkat kartu ke atas sebesar 10px */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Menambah bayangan agar lebih hidup */
+}

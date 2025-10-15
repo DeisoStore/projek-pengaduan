@@ -1,0 +1,33 @@
+/* File: src/App.css */
+
+/* Variabel Warna Khas Bea Cukai */
+:root {
+  --beacukai-blue: #003366; /* Biru Gelap Korporat */
+  --beacukai-yellow: #FFD700; /* Kuning Emas */
+}
+
+.navbar-beacukai {
+  background-color: var(--beacukai-blue) !important;
+}
+
+.footer-beacukai {
+  background-color: var(--beacukai-blue);
+  color: var(--beacukai-yellow);
+  padding: 40px 0;
+  margin-top: 50px; /* Memberi jarak dari konten di atasnya */
+}
+
+.footer-beacukai h5 {
+  color: white;
+}
+
+.footer-beacukai a {
+  color: var(--beacukai-yellow);
+  text-decoration: none;
+  margin: 0 10px;
+  font-size: 1.8rem; /* Ukuran ikon sosial media */
+}
+
+.footer-beacukai a:hover {
+  color: white;
+}

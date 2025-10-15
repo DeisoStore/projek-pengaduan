@@ -1,0 +1,51 @@
+/* File: src/components/LaporanTable.css */
+
+.laporan-table {
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.laporan-table th, .laporan-table td {
+    vertical-align: middle;
+    padding: 1.25rem 1.5rem; /* Menambah ruang secara signifikan */
+}
+
+.laporan-table thead th {
+    border-bottom: 2px solid #dee2e6;
+    font-weight: 600;
+    color: #6c757d;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+}
+
+.laporan-table tbody tr {
+    transition: background-color 0.2s ease-in-out;
+}
+
+.laporan-table tbody tr:hover {
+    background-color: #f8f9fa;
+}
+
+.deskripsi-truncate {
+    display: inline-block;
+    max-width: 280px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+
+.action-button {
+    background: transparent;
+    border: none;
+    color: #6c757d;
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.action-button:hover {
+    background-color: #e9ecef;
+    color: #0d6efd;
+}

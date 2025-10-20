@@ -1,10 +1,39 @@
 /* File: src/pages/AdminDashboard.css */
 
 .admin-dashboard {
-    background-color: #f4f7fc; /* Warna latar belakang yang lembut */
-    min-height: 100vh;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    /* Memberi warna dasar jika gambar gagal dimuat */
+    background-color: #f4f7fc; 
 }
 
+.admin-dashboard::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Pastikan path ini benar sesuai struktur folder Anda */
+    background: url('../assets/images/dashboard-bg.jpg') no-repeat center center;
+    background-size: cover;
+    
+    filter: blur(10px);
+    opacity: 0.05; /* Dibuat sangat transparan */
+    
+    z-index: -1;
+}
+
+/* Pastikan konten di atas background */
+.admin-dashboard .mb-4, 
+.admin-dashboard .content-container {
+    position: relative;
+    z-index: 2;
+}
+
+
+/* Gaya-gaya lama Anda */
 .stat-card {
     border: none;
     border-radius: 10px;
@@ -40,7 +69,6 @@
     font-weight: bold;
 }
 
-/* Definisi Animasi Fade-in */
 @keyframes fadeIn {
     from {
         opacity: 0;

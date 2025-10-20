@@ -27,20 +27,20 @@ public class Laporan {
 
     private String status;
 
-    // --- PERUBAHAN UNTUK FILE UPLOAD PELAPOR ---
+    // --- Kolom BARU untuk Dokumen Laporan Awal ---
     @Lob
     @Column(columnDefinition = "LONGBLOB")
-    private byte[] dokumen;
+    private byte[] dokumenData;
     private String dokumenNama;
     private String dokumenTipe;
 
-    // --- PERUBAHAN UNTUK FILE FEEDBACK ADMIN ---
+    // --- Kolom BARU untuk Feedback & Dokumen Admin ---
     @Column(columnDefinition = "TEXT")
     private String feedbackDeskripsi;
 
     @Lob
     @Column(columnDefinition = "LONGBLOB")
-    private byte[] feedbackDokumen;
+    private byte[] feedbackDokumenData;
     private String feedbackDokumenNama;
     private String feedbackDokumenTipe;
 

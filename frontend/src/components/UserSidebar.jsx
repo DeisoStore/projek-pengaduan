@@ -2,7 +2,7 @@
 
 import { Nav } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
-import { FaChartPie, FaPenSquare, FaHistory } from 'react-icons/fa'; // Import ikon
+import { FaChartPie, FaPenSquare, FaHistory } from 'react-icons/fa';
 import './Sidebar.css';
 
 const UserSidebar = () => {
@@ -13,17 +13,17 @@ const UserSidebar = () => {
             </div>
             <LinkContainer to="/dashboard/grafik">
                 <Nav.Link className="d-flex align-items-center">
-                    <FaChartPie className="me-2" /> Ringkasan
+                    <FaChartPie className="me-2" /> Ringkasan Pengaduan
                 </Nav.Link>
             </LinkContainer>
             <LinkContainer to="/dashboard/buat-laporan">
                 <Nav.Link className="d-flex align-items-center">
-                    <FaPenSquare className="me-2" /> Buat Laporan Baru
+                    <FaPenSquare className="me-2" /> Buat Laporan Pengaduan
                 </Nav.Link>
             </LinkContainer>
             <LinkContainer to="/dashboard/riwayat">
                 <Nav.Link className="d-flex align-items-center">
-                    <FaHistory className="me-2" /> Riwayat Laporan
+                    <FaHistory className="me-2" /> Tracking Pengaduan
                 </Nav.Link>
             </LinkContainer>
         </Nav>

@@ -1,7 +1,7 @@
 /* File: src/pages/UserDashboard.css */
 
 .user-dashboard {
-    background-color: #f4f7fc; /* Warna latar yang sama dengan admin untuk konsistensi */
+    background-color: #f4f7fc; 
     min-height: 100vh;
 }
 
@@ -17,16 +17,21 @@
 
 .dashboard-card {
     border: none;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    border-radius: 10px; 
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08); 
     margin-bottom: 20px;
+    transition: transform 0.2s ease-in-out;
 }
 
-/* Definisi Animasi Fade-in (sama seperti admin) */
+.dashboard-card:hover {
+    transform: translateY(-3px); 
+}
+
+
 @keyframes fadeIn {
     from {
         opacity: 0;
-        transform: translateY(10px);
+        transform: translateY(15px);
     }
     to {
         opacity: 1;

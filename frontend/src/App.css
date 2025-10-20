@@ -1,9 +1,7 @@
-/* File: src/App.css */
 
-/* Variabel Warna Khas Bea Cukai */
 :root {
-  --beacukai-blue: #003366; /* Biru Gelap Korporat */
-  --beacukai-yellow: #FFD700; /* Kuning Emas */
+  --beacukai-blue: #003366;
+  --beacukai-yellow: #FFD700;
 }
 
 .navbar-beacukai {
@@ -14,7 +12,7 @@
   background-color: var(--beacukai-blue);
   color: var(--beacukai-yellow);
   padding: 40px 0;
-  margin-top: 50px; /* Memberi jarak dari konten di atasnya */
+  margin-top: 50px;
 }
 
 .footer-beacukai h5 {
@@ -25,9 +23,46 @@
   color: var(--beacukai-yellow);
   text-decoration: none;
   margin: 0 10px;
-  font-size: 1.8rem; /* Ukuran ikon sosial media */
+  font-size: 1.8rem;
 }
 
 .footer-beacukai a:hover {
   color: white;
+}
+
+/* GAYA UNTUK MARQUEE DI DALAM NAVBAR */
+.navbar-marquee-container {
+  display: flex;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 5px 15px;
+  overflow: hidden;
+  flex-grow: 1;
+  margin: 0 20px;
+}
+
+.marquee-label {
+  color: var(--beacukai-yellow);
+  font-weight: bold;
+  white-space: nowrap;
+  margin-right: 15px;
+  flex-shrink: 0;
+}
+
+.marquee-content {
+  color: white;
+  white-space: nowrap;
+  display: inline-block;
+  padding-left: 100%;
+  animation: scroll-left-navbar 20s linear infinite;
+}
+
+@keyframes scroll-left-navbar {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-150%);
+  }
 }

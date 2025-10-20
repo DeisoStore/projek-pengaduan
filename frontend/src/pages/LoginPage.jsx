@@ -35,7 +35,7 @@ const LoginPage = () => {
                     {/* Kolom Kiri: Branding */}
                     <Col md={6} className="auth-branding-section d-none d-md-flex">
                         <div>
-                            <h2>Sistem Pengaduan Online</h2>
+                            <h2>Portal Pengaduan Online</h2>
                             <p>Selamat datang kembali. Silakan masuk untuk melanjutkan dan mengelola laporan Anda.</p>
                         </div>
                     </Col>

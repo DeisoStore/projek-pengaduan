@@ -1,11 +1,12 @@
-// File: src/components/RiwayatLaporan.js
-
+// File: src/components/RiwayatLaporan.jsx
 import { useState, useEffect } from 'react';
 import { Card, Accordion, Spinner, Alert, Button } from 'react-bootstrap';
 import { FaDownload } from 'react-icons/fa';
 import laporanService from '../services/laporanService';
 import authService from '../services/authService';
-import './RiwayatLaporan.css'; // Import file CSS baru kita
+import './RiwayatLaporan.css';
+
+const API_BASE_URL = "http://localhost:8080/api"; // Definisikan base URL
 
 const RiwayatLaporan = () => {
     const [laporanList, setLaporanList] = useState([]);
@@ -17,7 +18,7 @@ const RiwayatLaporan = () => {
         if (currentUser) {
             laporanService.getLaporanByUserId(currentUser.id)
                 .then(response => {
-                    setLaporanList(response.data.reverse()); // Tampilkan yg terbaru di atas
+                    setLaporanList(response.data.reverse());
                     setLoading(false);
                 })
                 .catch(err => {
@@ -65,19 +66,22 @@ const RiwayatLaporan = () => {
                                         <div className="detail-section">
                                             <h6>Detail Laporan Anda</h6>
                                             <p>{laporan.deskripsiLaporan}</p>
+                                            {laporan.dokumenNama && (
+                                                <Button variant="outline-secondary" size="sm" href={`${API_BASE_URL}/laporan/dokumen/${laporan.id}`} target="_blank">
+                                                    <FaDownload className="me-2" /> Lihat Dokumen Anda
+                                                </Button>
+                                            )}
                                         </div>
                                         <div className="detail-section">
-                                            <h6>Tindak Lanjut dari Petugas</h6>
+                                            <h6>Tindak Lanjut dari Admin</h6>
                                             {laporan.feedbackDeskripsi ? (
                                                 <p>{laporan.feedbackDeskripsi}</p>
                                             ) : (
                                                 <p className="text-muted"><i>Belum ada feedback dari admin.</i></p>
                                             )}
-
-                                            {/* Tampilkan tombol download jika ada URL dokumen */}
-                                            {laporan.feedbackDokumenUrl && (
-                                                <Button variant="outline-primary" size="sm" href={laporan.feedbackDokumenUrl} target="_blank">
-                                                    <FaDownload className="me-2" /> Lihat Dokumen Lampiran
+                                            {laporan.feedbackDokumenNama && (
+                                                <Button variant="outline-primary" size="sm" href={`${API_BASE_URL}/laporan/feedback-dokumen/${laporan.id}`} target="_blank">
+                                                    <FaDownload className="me-2" /> Lihat Lampiran Admin
                                                 </Button>
                                             )}
                                         </div>

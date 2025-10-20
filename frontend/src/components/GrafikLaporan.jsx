@@ -29,7 +29,7 @@ const GrafikLaporan = () => {
                             data: [baruCount, prosesCount, selesaiCount],
                             backgroundColor: ['#ffc107', '#0d6efd', '#198754'],
                             borderColor: ['#fff', '#fff', '#fff'],
-                            borderWidth: 2,
+                            borderWidth: 1,
                         }]
                     });
                     setLoading(false);

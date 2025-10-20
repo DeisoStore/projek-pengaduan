@@ -37,15 +37,21 @@ const PengumumanPage = () => {
                                 <div className="d-flex justify-content-between w-100 me-2">
                                     <strong>{item.judul}</strong>
                                     <small className="text-muted">
-                                        {new Date(item.tanggalDibuat).toLocaleDateString('id-ID', { year: 'numeric', month: 'long', day: 'numeric' })}
+                                        {new Date(item.tanggalDibuat).toLocaleDateString('id-ID', {
+                                            year: 'numeric',
+                                            month: 'long',
+                                            day: 'numeric'
+                                        })}
                                     </small>
                                 </div>
                             </Accordion.Header>
-                            <Accordion.Body style={{ whiteSpace: 'pre-wrap' }}>
+                            <Accordion.Body style={{ whiteSpace: 'pre-wrap', textAlign: 'justify' }}>
                                 {item.isi}
                             </Accordion.Body>
                         </Accordion.Item>
-                    )) : <p className="text-center">Belum ada pengumuman saat ini.</p>}
+                    )) : (
+                        <p className="text-center">Belum ada pengumuman saat ini.</p>
+                    )}
                 </Accordion>
             )}
         </Container>

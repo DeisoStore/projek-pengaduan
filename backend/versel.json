@@ -1,0 +1,14 @@
+{
+  "builds": [
+    {
+      "src": "pom.xml",
+      "use": "@dedywijaya/vercel-java-runtime"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/"
+    }
+  ]
+}

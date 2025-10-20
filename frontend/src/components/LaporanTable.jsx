@@ -5,10 +5,11 @@ import { Card, Table, Alert, Button, Badge, OverlayTrigger, Tooltip } from 'reac
 import { FaEdit, FaCogs } from 'react-icons/fa';
 import api from '../services/api';
 import ProsesLaporanModal from './ProsesLaporanModal';
-import SelesaikanLaporanModal from './SelesaikanLaporanModal';
-import './LaporanTable.css'; // Pastikan file CSS baru diimpor
+// Kita hapus SelesaikanLaporanModal untuk sementara agar tidak menyebabkan error
+// import SelesaikanLaporanModal from './SelesaikanLaporanModal';
+import './LaporanTable.css';
 
-// Komponen Avatar (tidak berubah)
+// Komponen Avatar
 const Avatar = ({ name }) => {
     const initial = name ? name.charAt(0).toUpperCase() : '?';
     return (
@@ -24,21 +25,44 @@ const Avatar = ({ name }) => {
 };
 
 const LaporanTable = ({ status, title, onUpdate }) => {
-    // --- Semua state dan fungsi JavaScript Anda tidak berubah ---
     const [laporanList, setLaporanList] = useState([]);
     const [error, setError] = useState('');
     const [showProsesModal, setShowProsesModal] = useState(false);
     const [selectedLaporan, setSelectedLaporan] = useState(null);
-    const [showSelesaikanModal, setShowSelesaikanModal] = useState(false);
-    const [laporanToSelesaikan, setLaporanToSelesaikan] = useState(null);
-    const loadLaporan = useCallback(() => { /* ... */ }, [status]);
-    useEffect(() => { loadLaporan(); }, [loadLaporan]);
-    const handleShowProsesModal = (laporan) => { /* ... */ };
-    const handleCloseProsesModal = () => { /* ... */ };
-    const handleShowSelesaikanModal = (laporan) => { /* ... */ };
-    const handleCloseSelesaikanModal = () => { /* ... */ };
-    const handleUpdateSuccess = () => { /* ... */ };
-    // --------------------------------------------------------
+
+    const loadLaporan = useCallback(() => {
+        setError('');
+        api.get("/laporan/all")
+            .then(response => {
+                const filteredLaporan = response.data.filter(l => l.status === status);
+                setLaporanList(filteredLaporan);
+            })
+            .catch(err => {
+                console.error("Gagal memuat data laporan:", err);
+                setError("Gagal memuat data laporan.");
+            });
+    }, [status]);
+
+    useEffect(() => {
+        loadLaporan();
+    }, [loadLaporan]);
+
+    const handleShowProsesModal = (laporan) => {
+        setSelectedLaporan(laporan);
+        setShowProsesModal(true);
+    };
+
+    const handleCloseProsesModal = () => {
+        setShowProsesModal(false);
+        setSelectedLaporan(null);
+    };
+
+    const handleUpdateSuccess = () => {
+        loadLaporan();
+        if (onUpdate) {
+            onUpdate();
+        }
+    };
 
     return (
         <>
@@ -46,7 +70,7 @@ const LaporanTable = ({ status, title, onUpdate }) => {
                 <Card.Header as="h5">{title}</Card.Header>
                 <Card.Body className="p-0">
                     {error && <Alert variant="danger" className="m-3">{error}</Alert>}
-                    <Table responsive className="laporan-table mb-0">
+                    <Table hover responsive className="laporan-table mb-0">
                         <thead className="table-light">
                             <tr>
                                 <th className="ps-4" style={{ width: '25%' }}>PELAPOR</th>
@@ -66,9 +90,7 @@ const LaporanTable = ({ status, title, onUpdate }) => {
                                                 <div className="ms-3">
                                                     <span className="fw-bold">{laporan.namaPelapor}</span>
                                                     <br />
-                                                    <small className="text-muted">
-                                                        {new Date(laporan.tanggalLapor).toLocaleDateString('id-ID', { day: '2-digit', month: 'short', year: 'numeric' })}
-                                                    </small>
+                                                    <small className="text-muted">{new Date(laporan.tanggalLapor).toLocaleDateString('id-ID')}</small>
                                                 </div>
                                             </div>
                                         </td>
@@ -113,7 +135,7 @@ const LaporanTable = ({ status, title, onUpdate }) => {
                 </Card.Body>
             </Card>
 
-            {/* ... (Kode modal tidak berubah) ... */}
+            {selectedLaporan && <ProsesLaporanModal show={showProsesModal} handleClose={handleCloseProsesModal} laporan={selectedLaporan} onUpdate={handleUpdateSuccess} />}
         </>
     );
 };

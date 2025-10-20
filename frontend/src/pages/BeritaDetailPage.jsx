@@ -1,15 +1,14 @@
-// File: src/pages/BeritaDetailPage.jsx
-
 import { useState, useEffect } from 'react';
-import { Container, Row, Col, Spinner, Alert, Image } from 'react-bootstrap';
 import { useParams, Link } from 'react-router-dom';
+import { Container, Spinner, Alert, Row, Col } from 'react-bootstrap';
 import beritaService from '../services/beritaService';
+import './BeritaDetailPage.css';
 
 const BeritaDetailPage = () => {
+    const { id } = useParams();
     const [berita, setBerita] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
-    const { id } = useParams(); // Gets the ID from the URL (e.g., /berita/5)
 
     useEffect(() => {
         beritaService.getById(id)
@@ -18,41 +17,56 @@ const BeritaDetailPage = () => {
                 setLoading(false);
             })
             .catch(() => {
-                setError("Tidak dapat memuat detail berita.");
+                setError("Berita tidak ditemukan atau server bermasalah.");
                 setLoading(false);
             });
     }, [id]);
 
     const getImageSrc = (base64Data) => {
-        if (!base64Data) return 'https://via.placeholder.com/800x400';
+        if (!base64Data) return 'https://via.placeholder.com/900x500';
         return `data:image/jpeg;base64,${base64Data}`;
     };
 
-    if (loading) return <div className="text-center py-5"><Spinner animation="border" /></div>;
-    if (error) return <Container className="py-5"><Alert variant="danger">{error}</Alert></Container>;
+    if (loading) return <div className="text-center mt-5"><Spinner animation="border" variant="primary" /></div>;
+    if (error) return <Alert variant="danger" className="mt-5 text-center">{error}</Alert>;
 
     return (
-        <Container className="my-5">
-            <Row className="justify-content-center">
-                <Col lg={8}>
-                    <article>
-                        <header className="mb-4">
-                            <h1 className="fw-bolder mb-1">{berita.judul}</h1>
-                            <div className="text-muted fst-italic mb-2">
-                                Dipublikasikan pada {new Date(berita.tanggalDibuat).toLocaleDateString('id-ID', { dateStyle: 'full' })} oleh {berita.penulis}
+        <div className="berita-detail-wrapper py-5">
+            <Container>
+                <Row className="justify-content-center fade-in">
+                    <Col lg={9}>
+                        <h1 className="fw-bold mb-3 text-dark display-5">{berita.judul}</h1>
+                        <div className="text-muted mb-3">
+                            <span>Dipublikasikan oleh </span>
+                            <strong>{berita.penulis || 'Admin'}</strong>
+                            <span> • {new Date(berita.tanggalDibuat).toLocaleDateString('id-ID')}</span>
+                        </div>
+
+                        <div className="news-image mb-4">
+                            <img
+                                src={getImageSrc(berita.gambar)}
+                                alt={berita.judul}
+                                className="img-fluid rounded-4 shadow-sm w-100"
+                            />
+                        </div>
+
+                        <div className="berita-content text-justify">
+                            <p dangerouslySetInnerHTML={{ __html: berita.isi.replace(/\n/g, '<br/>') }} />
+                        </div>
+
+                        <hr className="my-5" />
+                        <div className="d-flex justify-content-between align-items-center">
+                            <Link to="/berita" className="btn btn-outline-primary rounded-pill px-4">
+                                ← Kembali ke Daftar Berita
+                            </Link>
+                            <div className="share-info text-secondary small">
+                                <i className="bi bi-share-fill me-2"></i>Bagikan artikel ini
                             </div>
-                        </header>
-                        <figure className="mb-4">
-                            <Image src={getImageSrc(berita.gambar)} className="img-fluid rounded" />
-                        </figure>
-                        <section className="mb-5" style={{ whiteSpace: 'pre-wrap', fontSize: '1.1rem', lineHeight: '1.6' }}>
-                            <p>{berita.isi}</p>
-                        </section>
-                        <Link to="/berita" className="btn btn-outline-primary">← Kembali ke Daftar Berita</Link>
-                    </article>
-                </Col>
-            </Row>
-        </Container>
+                        </div>
+                    </Col>
+                </Row>
+            </Container>
+        </div>
     );
 };
 

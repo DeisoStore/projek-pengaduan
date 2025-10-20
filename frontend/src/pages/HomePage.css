@@ -1,20 +1,119 @@
-/* File: src/pages/HomePage.css */
+
 
 .hero-banner {
-    background: url('https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=2069') no-repeat center center;
-    background-size: cover;
-    padding: 100px 0;
+    padding-top: 100px;
+    padding-bottom: 150px;
+    position: relative; 
+    overflow: hidden;   
+    z-index: 1;
 }
 
-/* --- KODE BARU UNTUK ANIMASI KARTU --- */
+.hero-banner::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('../assets/images/hero-bg.jpg') no-repeat center center;
+    background-size: cover;
+    filter: blur(5px);
+    transform: scale(1.05); 
+    z-index: -2; 
+}
+.hero-banner::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); 
+    z-index: -1; 
+}
 
-/* Menentukan bahwa kartu akan memiliki transisi yang mulus */
+.hero-banner .container {
+    position: relative;
+    z-index: 2;
+}
+
+.wave-svg {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+}
+
 .tentang-kami-card {
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    text-align: justify
 }
 
-/* Efek yang terjadi saat cursor mendekat (hover) */
 .tentang-kami-card:hover {
-    transform: translateY(-10px); /* Mengangkat kartu ke atas sebesar 10px */
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Menambah bayangan agar lebih hidup */
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.alur-pengaduan-section {
+    background-color: #f8f9fa;
+    padding: 80px 0;
+}
+
+.step-box {
+    text-align: justify;
+    padding: 20px;
+}
+
+.step-icon {
+    font-size: 4rem;
+    color: var(--beacukai-blue);
+    margin-bottom: 1.1rem;
+}
+
+.step-title {
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.info-pengaduan-section {
+    padding: 80px 0;
+    text-align: justify
+ 
+}
+
+.info-pengaduan-section ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.info-pengaduan-section li {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+}
+
+.info-pengaduan-section .icon-check {
+    color: #198754; 
+    margin-right: 15px;
+    margin-top: 5px;
+}
+
+.contact-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.contact-list li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+}
+
+.contact-list .icon {
+    color: var(--beacukai-blue);
+    font-size: 1.5rem;
+    margin-right: 15px;
+    width: 30px; 
 }

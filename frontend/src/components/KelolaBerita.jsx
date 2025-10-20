@@ -1,4 +1,3 @@
-// File: src/components/KelolaBerita.jsx
 
 import { useState, useEffect } from 'react';
 import { Row, Col, Card, Form, Button, Alert, Table, Modal } from 'react-bootstrap';

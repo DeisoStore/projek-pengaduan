@@ -40,8 +40,8 @@ const AdminDashboardPage = () => {
             <Sidebar />
             <div className="flex-grow-1 p-4 admin-dashboard">
                 <div className="mb-4">
-                    <h2>Dashboard Admin</h2>
-                    <p className="text-muted">Selamat datang, kelola sistem pengaduan dengan efisien.</p>
+                    <h2>Portal Admin</h2>
+                    <p className="text-muted">Selamat datang, kelola sistem pengaduan berbasis online.</p>
                 </div>
                 <div className="content-container">
                     <Routes>

@@ -1,27 +1,27 @@
 // File: src/components/ProsesLaporanModal.js
 
-import { useState, useEffect } from 'react'; // Tambahkan useEffect
+import { useState, useEffect } from 'react';
 import { Modal, Button, Form, Alert } from 'react-bootstrap';
+import { FaDownload } from 'react-icons/fa'; // <-- 1. Import ikon
 import laporanService from '../services/laporanService';
 
+// 2. Definisikan base URL API untuk membuat link download/view
+const API_BASE_URL = "http://localhost:8080/api";
+
 const ProsesLaporanModal = ({ show, handleClose, laporan, onUpdate }) => {
-    // State untuk form
     const [feedbackDeskripsi, setFeedbackDeskripsi] = useState('');
     const [status, setStatus] = useState('DIPROSES');
-
-    // State untuk notifikasi
+    const [feedbackDokumen, setFeedbackDokumen] = useState(null);
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
 
-    // --- INI BAGIAN BARU YANG MEMBUATNYA PINTAR ---
-    // useEffect akan berjalan setiap kali 'laporan' yang dipilih berubah
     useEffect(() => {
         if (laporan) {
-            // Isi form dengan data yang sudah ada dari laporan
-            setFeedbackDeskripsi(laporan.feedbackDeskripsi || ''); // Gunakan feedback lama atau string kosong
-            setStatus(laporan.status === 'BARU' ? 'DIPROSES' : laporan.status); // Set status ke 'DIPROSES' jika baru, atau status saat ini jika sudah diproses
+            setFeedbackDeskripsi(laporan.feedbackDeskripsi || '');
+            setStatus(laporan.status === 'BARU' ? 'DIPROSES' : laporan.status);
+            setFeedbackDokumen(null);
         }
-    }, [laporan]); // Pemicunya adalah prop 'laporan'
+    }, [laporan]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -33,7 +33,7 @@ const ProsesLaporanModal = ({ show, handleClose, laporan, onUpdate }) => {
             return;
         }
 
-        const feedbackData = { feedbackDeskripsi, status };
+        const feedbackData = { feedbackDeskripsi, status, feedbackDokumen };
 
         laporanService.prosesLaporan(laporan.id, feedbackData)
             .then(() => {
@@ -42,7 +42,7 @@ const ProsesLaporanModal = ({ show, handleClose, laporan, onUpdate }) => {
                 setTimeout(() => {
                     handleClose();
                     setSuccess('');
-                }, 1500); // Beri waktu 1.5 detik untuk membaca pesan sukses
+                }, 1500);
             })
             .catch(err => {
                 setError('Gagal mengirim feedback. Coba lagi.');
@@ -59,20 +59,31 @@ const ProsesLaporanModal = ({ show, handleClose, laporan, onUpdate }) => {
                 <Modal.Body>
                     {error && <Alert variant="danger">{error}</Alert>}
                     {success && <Alert variant="success">{success}</Alert>}
-
-                    <h5>Detail Laporan</h5>
+                    
+                    <h5>Detail Laporan dari Pelapor</h5>
                     <p><strong>Pelapor:</strong> {laporan?.namaPelapor}</p>
                     <p><strong>Deskripsi:</strong> {laporan?.deskripsiLaporan}</p>
-                    <hr />
+                    
+                    {/* --- 3. Tombol BARU yang Muncul Secara Kondisional --- */}
+                    {laporan?.dokumenNama && (
+                        <div className="mb-3">
+                            <Button variant="outline-secondary" size="sm" href={`${API_BASE_URL}/laporan/dokumen/${laporan.id}`} target="_blank">
+                                <FaDownload className="me-2" /> Lihat Dokumen Pelapor
+                            </Button>
+                        </div>
+                    )}
 
+                    <hr />
+                    
+                    <h5>Tindak Lanjut Anda</h5>
                     <Form.Group className="mb-3">
                         <Form.Label><strong>Feedback / Tindak Lanjut</strong></Form.Label>
                         <Form.Control as="textarea" rows={5} value={feedbackDeskripsi} onChange={(e) => setFeedbackDeskripsi(e.target.value)} required />
                     </Form.Group>
 
                     <Form.Group className="mb-3">
-                        <Form.Label><strong>Upload Dokumen/Gambar (Opsional)</strong></Form.Label>
-                        <Form.Control type="file" />
+                        <Form.Label><strong>Upload Dokumen/Gambar Tindak Lanjut (Opsional)</strong></Form.Label>
+                        <Form.Control type="file" onChange={(e) => setFeedbackDokumen(e.target.files[0])} />
                     </Form.Group>
 
                     <Form.Group>

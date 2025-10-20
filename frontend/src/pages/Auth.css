@@ -1,7 +1,7 @@
 /* File: src/pages/Auth.css */
 
 .auth-container {
-    min-height: calc(100vh - 56px); /* Tinggi viewport dikurangi tinggi navbar */
+    min-height: calc(100vh - 56px); 
     display: flex;
     align-items: center;
     justify-content: center;

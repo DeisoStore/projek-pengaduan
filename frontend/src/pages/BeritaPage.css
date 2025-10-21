@@ -1,63 +1,65 @@
-.berita-wrapper {
-  background-color: #f4f8fb;
-  min-height: 100vh;
-  animation: fadeIn 0.8s ease;
-  
+/* ==== Gaya Isi Berita ==== */
+.berita-detail {
+  line-height: 1.8;
+  font-size: 1.05rem;
+  color: #333;
+  word-wrap: break-word;
 }
 
-.featured-news {
-  border-radius: 20px;
-  overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+/* Kutipan Profesional */
+.berita-detail blockquote {
+  position: relative;
+  background: #fff;
+  font-style: italic;
+  color: #222;
+  font-size: 1.1rem;
+  margin: 2rem auto;
+  padding: 1.2rem 2rem;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  max-width: 90%;
 }
 
-.featured-news:hover {
-  transform: scale(1.01);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+/* Dua Garis Merah di Sisi Kiri dan Kanan */
+.berita-detail blockquote::before,
+.berita-detail blockquote::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 5px;
+  background-color: #e63946;
+  border-radius: 5px;
 }
 
-.featured-img {
-  width: 100%;
-  height: 100%;
+.berita-detail blockquote::before {
+  left: 0;
+}
+
+.berita-detail blockquote::after {
+  right: 0;
+}
+
+/* Responsif */
+@media (max-width: 768px) {
+  .berita-detail {
+    font-size: 1rem;
+  }
+
+  .berita-detail blockquote {
+    padding: 1rem;
+    font-size: 1rem;
+  }
+
+  .berita-detail blockquote::before,
+  .berita-detail blockquote::after {
+    width: 4px;
+  }
+}
+
+/* Gambar di detail berita */
+.berita-detail-img {
+  max-height: 400px;
   object-fit: cover;
-  border-right: 4px solid #007bff;
-}
-
-.news-card {
-  border-radius: 15px;
-  transition: all 0.3s ease;
-  overflow: hidden;
-}
-
-.news-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 25px rgba(0, 123, 255, 0.2);
-}
-
-.news-card img {
-  height: 220px;
-  object-fit: cover;
-  transition: transform 0.4s ease;
-}
-
-.img-hover:hover img {
-  transform: scale(1.05);
-}
-
-.text-justify {
-  text-align: justify;
-}
-
-.fade-in {
-  animation: fadeInUp 0.8s ease both;
-}
-
-@keyframes fadeInUp {
-  0% { opacity: 0; transform: translateY(20px); }
-  100% { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes fadeIn {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
 }

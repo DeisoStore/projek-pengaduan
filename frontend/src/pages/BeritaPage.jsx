@@ -92,7 +92,7 @@ const BeritaPage = () => {
                                         <Card.Footer className="bg-white border-0 small text-muted">
                                             Dipublikasikan oleh <strong>{item.penulis || 'Admin'}</strong><br />
                                             {new Date(item.tanggalDibuat).toLocaleDateString('id-ID')}
-                                        </Card.Footer>
+                                        </Card.Footer>a
                                     </Card>
                                 </Col>
                             )) : (

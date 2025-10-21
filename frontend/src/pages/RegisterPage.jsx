@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { Card, Form, Button, Row, Col, Alert } from 'react-bootstrap';
 import { useNavigate, Link } from 'react-router-dom';
 import authService from '../services/authService';
-import './Auth.css'; // <-- Import file CSS baru kita
+import './Auth.css'; 
 
 const RegisterPage = () => {
     const [nama, setNama] = useState('');

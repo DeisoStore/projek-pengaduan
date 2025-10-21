@@ -5,11 +5,9 @@ import { Card, Table, Alert, Button, Badge, OverlayTrigger, Tooltip } from 'reac
 import { FaEdit, FaCogs } from 'react-icons/fa';
 import api from '../services/api';
 import ProsesLaporanModal from './ProsesLaporanModal';
-// Kita hapus SelesaikanLaporanModal untuk sementara agar tidak menyebabkan error
-// import SelesaikanLaporanModal from './SelesaikanLaporanModal';
 import './LaporanTable.css';
 
-// Komponen Avatar
+
 const Avatar = ({ name }) => {
     const initial = name ? name.charAt(0).toUpperCase() : '?';
     return (
@@ -77,7 +75,7 @@ const LaporanTable = ({ status, title, onUpdate }) => {
                                 <th style={{ width: '20%' }}>KATEGORI</th>
                                 <th style={{ width: '35%' }}>DESKRIPSI</th>
                                 <th style={{ width: '10%' }}>STATUS</th>
-                                {(status === 'BARU' || status === 'DIPROSES') && <th style={{ width: '10%' }}>AKSI</th>}
+                                {(status === 'BARU' || status === 'DIPROSES') && <th style={{ width: '10%' }}>PROSES</th>}
                             </tr>
                         </thead>
                         <tbody>

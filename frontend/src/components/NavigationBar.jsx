@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap';
 import { Link, useLocation } from 'react-router-dom';
 import authService from '../services/authService';
+import './NavigationBar.css';
 
 const NavigationBar = () => {
     const [currentUser, setCurrentUser] = useState(undefined);
@@ -30,12 +31,14 @@ const NavigationBar = () => {
                 <Navbar.Collapse id="basic-navbar-nav">
                     
                     {location.pathname === '/' && (
-                        <div className="navbar-marquee-container d-none d-lg-flex">
-                            <span className="marquee-label">Informasi &gt;</span>
-                            <span className="marquee-content">
-                                Ini adalah portal web sistem pengaduan masyarakat berbasis web
-                            </span>
-                        </div>
+                    <div className="navbar-marquee-container d-none d-lg-flex">
+                        <span className="marquee-label">Informasi &gt;</span>
+                         <div className="marquee-wrapper">
+                        <span className="marquee-content">
+                             Ini adalah portal web sistem pengaduan masyarakat berbasis web
+                       </span>
+                         </div>
+                    </div>
                     )}
 
                     <Nav className="ms-auto">

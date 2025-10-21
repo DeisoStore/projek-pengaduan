@@ -1,11 +1,10 @@
-// File: src/components/ProsesLaporanModal.js
+
 
 import { useState, useEffect } from 'react';
 import { Modal, Button, Form, Alert } from 'react-bootstrap';
-import { FaDownload } from 'react-icons/fa'; // <-- 1. Import ikon
+import { FaDownload } from 'react-icons/fa'; 
 import laporanService from '../services/laporanService';
 
-// 2. Definisikan base URL API untuk membuat link download/view
 const API_BASE_URL = "http://localhost:8080/api";
 
 const ProsesLaporanModal = ({ show, handleClose, laporan, onUpdate }) => {

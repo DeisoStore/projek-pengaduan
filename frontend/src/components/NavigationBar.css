@@ -1,0 +1,79 @@
+
+
+.navbar-beacukai {
+  background-color: #002366;
+}
+
+
+.navbar-beacukai .navbar-brand,
+.navbar-beacukai .nav-link,
+.navbar-beacukai .nav-dropdown-toggle {
+  color: #FFD700 !important; 
+  font-weight: normal; 
+  transition: color 0.3s ease;
+}
+
+/* Efek hover */
+.navbar-beacukai .nav-link:hover,
+.navbar-beacukai .navbar-brand:hover {
+  color: #ffea00 !important; 
+}
+
+
+.navbar-beacukai .dropdown-menu {
+  background-color: #002366;
+  border: none;
+}
+
+.navbar-beacukai .dropdown-item {
+  color: #FFD700 !important;
+  font-weight: normal;
+}
+
+.navbar-beacukai .dropdown-item:hover {
+  background-color: #001a4d;
+  color: #ffea00 !important;
+}
+.navbar-marquee-container {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  width: 100%;
+  white-space: nowrap;
+  color: #fff; /* Warna putih */
+  font-size: 0.95rem;
+  margin-left: 1rem;
+}
+
+/* Label "Informasi >" */
+.navbar-marquee-container .marquee-label {
+  margin-right: 0.5rem;
+  color: #FFD700; /* Tetap kuning khas Bea Cukai */
+  font-weight: normal;
+}
+
+/* Wrapper agar efek gradasi hanya di kanan */
+.marquee-wrapper {
+  position: relative;
+  overflow: hidden;
+  flex: 1;
+}
+
+/* Teks marquee — putih, tanpa efek kedip */
+.marquee-content {
+  display: inline-block;
+  padding-left: 100%;
+  color: #ffffff; /* Teks putih */
+  animation: scrollText 18s linear infinite;
+
+}
+
+/* Animasi jalan halus dari kanan ke kiri */
+@keyframes scrollText {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}

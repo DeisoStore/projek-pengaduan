@@ -1,3 +1,6 @@
+projek ini merupakan sistem pengaduan berbasis online.
+
+
 projek ini adalah projek sistem pengaduan berbasis website menggunakan java spring sebagai backend dan react js sebagai frontend
 
 cara penggunaan 
@@ -9,5 +12,6 @@ akses dashboard admin
 
 pelapor
 akses dashboard pelapor
+
 
 selamat mencoba

@@ -1,5 +1,3 @@
-// File: src/pages/AdminDashboardPage.js
-
 import { useState, useEffect } from 'react';
 import { Row } from 'react-bootstrap';
 import { Routes, Route, Navigate } from 'react-router-dom';
@@ -59,8 +57,6 @@ const AdminDashboardPage = () => {
                         } />
 
                         <Route path="proses" element={<LaporanTable status="DIPROSES" title="Tabel Laporan Diproses" onUpdate={refreshStatistics} />} />
-
-                        {/* 2. Gunakan komponen baru untuk rute "selesai" */}
                         <Route path="selesai" element={<LaporanSelesaiView />} />
                         <Route path="berita" element={<KelolaBerita />} />
                         <Route path="kegiatan" element={<KelolaKegiatan />} />

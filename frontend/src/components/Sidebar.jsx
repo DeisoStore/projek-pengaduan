@@ -2,7 +2,6 @@
 
 import { Nav } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
-// CORRECTED LINE: FaBullhorn has been added to the import list
 import { FaInbox, FaSpinner, FaCheckCircle, FaUserPlus, FaBullhorn } from 'react-icons/fa';
 import './Sidebar.css';
 import { FaImages } from 'react-icons/fa'
@@ -13,7 +12,7 @@ const Sidebar = () => {
     return (
         <Nav className="flex-column bg-dark sidebar">
             <div className="sidebar-header">
-                <h5>Menu Admin</h5>
+                <h5>Menu Utama</h5>
             </div>
             <LinkContainer to="/admin/dashboard/masuk">
                 <Nav.Link className="d-flex align-items-center"><FaInbox className="me-2" /> Laporan Masuk</Nav.Link>

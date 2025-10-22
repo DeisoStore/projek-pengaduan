@@ -1,28 +1,69 @@
+// File: src/components/HomePage.js
 
-import { Container, Row, Col, Card, Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
-import { FaPenSquare, FaCogs, FaUser, FaComments, FaCheckCircle, FaBook, FaPhone, FaFax, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa'; 
-import './HomePage.css'; 
+import { useState, useEffect } from 'react'; // Import hooks
+import { Container, Row, Col, Card, Button, Modal } from 'react-bootstrap'; // Import Modal
+import { Link, useNavigate } from 'react-router-dom'; // Import useNavigate
+import { FaPenSquare, FaCogs, FaUser, FaComments, FaCheckCircle, FaBook, FaPhone, FaFax, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
+import './HomePage.css';
 import imgProfesional from '../assets/images/profesional.jpg';
 import imgTransparan from '../assets/images/transparan.jpg';
 import imgTerpercaya from '../assets/images/terpercaya.jpg';
+import authService from '../services/authService'; // Import authService
 
 const HomePage = () => {
+    const [currentUser, setCurrentUser] = useState(undefined);
+    const [showModal, setShowModal] = useState(false);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        // Cek status login saat komponen dimuat
+        const user = authService.getCurrentUser();
+        if (user) {
+            setCurrentUser(user);
+        }
+    }, []);
+
+    // --- Handler untuk Modal ---
+    const handleModalClose = () => setShowModal(false);
+    const handleModalShow = () => setShowModal(true);
+
+    const handleLogout = () => {
+        authService.logout();
+        setShowModal(false);
+        window.location.reload(); 
+    };
+    
+   
+    const handlePortalClick = () => {
+        if (currentUser) {
+           
+            handleModalShow();
+        } else {
+           
+            navigate('/login');
+        }
+    };
+
     return (
         <>
             <div className="hero-banner text-white text-center">
                 <Container>
-                    <h1>Layanan Pengaduan Online</h1>
-                    <p className="lead">Sampaikan laporan Anda secara profesional, transparan, dan terpercaya.</p>
-                    <Button variant="primary" size="lg" as={Link} to="/login">Portal Pengaduan</Button>
+                    <h1>Sistem Pengaduan Online</h1>
+                    <p className="lead">Selamat datang Sampaikan laporan Anda secara profesional, transparan, dan terpercaya.</p>
+                   
+                    <Button variant="primary" size="lg" onClick={handlePortalClick}>
+                        Portal Pengaduan
+                    </Button>
                 </Container>
             </div>
 
-
+           
+            
+            {/* Bagian "Tentang Kami" */}
             <Container className="my-5">
                 <h2 className="text-center mb-4">Tentang Kami</h2>
                 <Row>
-                    <Col md={4} className="mb-4"> 
+                    <Col md={4} className="mb-4">
                         <Card className="h-100 tentang-kami-card">
                             <Card.Img variant="top" src={imgProfesional} />
                             <Card.Body>
@@ -58,7 +99,7 @@ const HomePage = () => {
                 </Row>
             </Container>
 
-        
+            {/* Bagian "Alur Pengaduan" */}
             <div className="alur-pengaduan-section">
                 <Container>
                     <div className="text-center mb-5">
@@ -89,7 +130,8 @@ const HomePage = () => {
                     </Row>
                 </Container>
             </div>
-                    
+            
+          
             <div className="info-pengaduan-section">
                 <Container>
                     <div className="text-center mb-5">
@@ -139,6 +181,27 @@ const HomePage = () => {
                     </Row>
                 </Container>
             </div>
+
+
+       
+            <Modal show={showModal} onHide={handleModalClose} centered>
+                <Modal.Header closeButton>
+                    <Modal.Title>Peringatan</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    Anda sudah login sebagai <strong>{currentUser?.username}</strong>.
+                    <br />
+                    Ingin logout?
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={handleModalClose}>
+                        Tutup
+                    </Button>
+                    <Button variant="danger" onClick={handleLogout}>
+                        Logout
+                    </Button>
+                </Modal.Footer>
+            </Modal>
         </>
     );
 }

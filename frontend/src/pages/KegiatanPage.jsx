@@ -39,13 +39,14 @@ const KegiatanPage = () => {
 
     return (
         <Container className="my-5">
-            {/* 4. Header halaman yang lebih profesional */}
-            <div className="text-center kegiatan-header">
-                <h1 className="fw-bold">Dokumentasi Kegiatan</h1>
-                <p className="lead text-muted">
-                    Momen-momen penting dari berbagai kegiatan yang telah kami laksanakan.
-                </p>
-            </div>
+                 {/* Header halaman yang lebih profesional dan menarik */}
+                <div className="text-center p-4 p-md-5 mb-4 rounded-3 bg-light">
+                    <h1 className="display-4 fw-bold">Dokumentasi Kegiatan</h1>
+                    <p className="fs-5 text-muted">
+                        Momen-momen penting dari berbagai kegiatan yang telah kami laksanakan.
+                    </p>
+                </div>
+
 
             {loading && <div className="text-center"><Spinner animation="border" /></div>}
             {error && <Alert variant="danger">{error}</Alert>}

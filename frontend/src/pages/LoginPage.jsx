@@ -35,11 +35,10 @@ const LoginPage = () => {
                     {/* Kolom Kiri: Branding */}
                     <Col md={6} className="auth-branding-section d-none d-md-flex">
                         <div>
-                            <h2>Portal Pengaduan Online</h2>
-                            <p>Selamat datang kembali. Silakan masuk untuk melanjutkan dan mengelola laporan Anda.</p>
+                             <h2 style={{ color: '#FFD700' }}>Portal Pengaduan Online</h2>
+                            <p style={{ color: '#FFD700' }}>Selamat datang kembali. Silakan masuk untuk melanjutkan dan mengelola laporan Anda.</p>
                         </div>
                     </Col>
-
                     {/* Kolom Kanan: Form Login */}
                     <Col md={6} className="auth-form-section">
                         <h3 className="text-center mb-4">Login Akun</h3>

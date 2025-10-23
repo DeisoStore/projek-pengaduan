@@ -1,7 +1,7 @@
 // File: src/pages/RegisterPage.js
 
 import { useState } from 'react';
-import { Card, Form, Button, Row, Col, Alert, Toast, ToastContainer } from 'react-bootstrap'; // Tambahkan Toast dan ToastContainer
+import { Card, Form, Button, Row, Col, Alert, Toast, ToastContainer } from 'react-bootstrap';
 import { useNavigate, Link } from 'react-router-dom';
 import authService from '../services/authService';
 import './Auth.css'; 
@@ -22,19 +22,14 @@ const RegisterPage = () => {
 
         try {
             await authService.register(userData);
-            // Ganti alert() dengan menampilkan Toast
             setShowToast(true);
-            
-            // Tunggu sebentar sebelum navigasi agar Toast terlihat
             setTimeout(() => {
                 navigate('/login');
-            }, 1500); // Tunda navigasi 1.5 detik
-            
+            }, 1500); 
         } catch (err) {
             setError(err.response?.data || "Terjadi kesalahan saat registrasi.");
         }
     };
-
     return (
         <div className="auth-container">
             {/* Tambahkan ToastContainer untuk menampung Toast */}
@@ -44,8 +39,7 @@ const RegisterPage = () => {
                     show={showToast} 
                     delay={1500} 
                     autohide
-                    bg="success" // Warna latar belakang Toast (hijau untuk sukses)
-                >
+                    bg="success">
                     <Toast.Header closeButton={false}>
                         <strong className="me-auto">✅ Registrasi Berhasil</strong>
                     </Toast.Header>
@@ -57,15 +51,14 @@ const RegisterPage = () => {
             
             <Card className="auth-card">
                 <Row className="g-0">
-                     {/* Kolom Kiri: Branding */}
+                     
                      <Col md={6} className="auth-branding-section d-none d-md-flex">
                          <div>
                              <h2>Buat Akun Baru</h2>
-                             <p>Bergabunglah dengan platform kami untuk dapat menyampaikan laporan Anda secara transparan dan akuntabel.</p>
+                             <p>Silahkan lakukan registrasi akun anda. Jika sudah pernah registrasi, Silahkan login dengan akun anda yang telah anda daftarkan.</p>
                          </div>
                      </Col>
-
-                     {/* Kolom Kanan: Form Register */}
+                     
                      <Col md={6} className="auth-form-section">
                          <h3 className="text-center mb-4">Pendaftaran</h3>
                          {error && <Alert variant="danger">{error}</Alert>}

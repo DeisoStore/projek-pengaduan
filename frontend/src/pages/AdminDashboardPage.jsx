@@ -8,7 +8,7 @@ import RegisterAdminForm from '../components/RegisterAdminForm';
 import KelolaPengumuman from '../components/KelolaPengumuman';
 import KelolaKegiatan from '../components/KelolaKegiatan';
 import StatCard from '../components/StatCard';
-import LaporanSelesaiView from '../components/LaporanSelesaiView'; // <-- 1. Import komponen baru
+import LaporanSelesaiView from '../components/LaporanSelesaiView'; 
 import laporanService from '../services/laporanService';
 import './AdminDashboard.css';
 import KelolaBerita from '../components/KelolaBerita';
@@ -48,9 +48,9 @@ const AdminDashboardPage = () => {
                         <Route path="masuk" element={
                             <>
                                 <Row className="mb-4">
-                                    <StatCard title="Laporan Baru Masuk" value={laporanCounts.baru} icon={<FaInbox />} bgColor="#ffc107" />
+                                    <StatCard title="Laporan Baru Masuk" value={laporanCounts.baru} icon={<FaInbox />} bgColor="#ff6347" />
                                     <StatCard title="Sedang Diproses" value={laporanCounts.proses} icon={<FaSpinner />} bgColor="#0d6efd" />
-                                    <StatCard title="Laporan Selesai" value={laporanCounts.selesai} icon={<FaCheckCircle />} bgColor="#198754" />
+                                    <StatCard title="Laporan Selesai" value={laporanCounts.selesai} icon={<FaCheckCircle />} bgColor="#4F7942" />
                                 </Row>
                                 <LaporanTable status="BARU" title="Tabel Laporan Masuk" onUpdate={refreshStatistics} />
                             </>

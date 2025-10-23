@@ -1,5 +1,3 @@
-// File: src/main/java/id/go/beacukai/pengaduanonline/config/SecurityConfig.java
-
 package id.go.beacukai.pengaduanonline.config;
 
 import java.util.Arrays;
@@ -35,7 +33,7 @@ public class SecurityConfig {
         return http.build();
     }
 
-    // 3. INI ADALAH BAGIAN BARU YANG MEMPERBAIKI MASALAH
+    
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();

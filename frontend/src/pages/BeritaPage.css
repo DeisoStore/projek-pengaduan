@@ -1,0 +1,65 @@
+/* ==== Gaya Isi Berita ==== */
+.berita-detail {
+  line-height: 1.8;
+  font-size: 1.05rem;
+  color: #333;
+  word-wrap: break-word;
+}
+
+/* Kutipan Profesional */
+.berita-detail blockquote {
+  position: relative;
+  background: #fff;
+  font-style: italic;
+  color: #222;
+  font-size: 1.1rem;
+  margin: 2rem auto;
+  padding: 1.2rem 2rem;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  max-width: 90%;
+}
+
+/* Dua Garis Merah di Sisi Kiri dan Kanan */
+.berita-detail blockquote::before,
+.berita-detail blockquote::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 5px;
+  background-color: #e63946;
+  border-radius: 5px;
+}
+
+.berita-detail blockquote::before {
+  left: 0;
+}
+
+.berita-detail blockquote::after {
+  right: 0;
+}
+
+/* Responsif */
+@media (max-width: 768px) {
+  .berita-detail {
+    font-size: 1rem;
+  }
+
+  .berita-detail blockquote {
+    padding: 1rem;
+    font-size: 1rem;
+  }
+
+  .berita-detail blockquote::before,
+  .berita-detail blockquote::after {
+    width: 4px;
+  }
+}
+
+/* Gambar di detail berita */
+.berita-detail-img {
+  max-height: 400px;
+  object-fit: cover;
+}

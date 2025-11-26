@@ -1,0 +1,104 @@
+/* ====== CONTAINER UTAMA ====== */
+.lupa-tiket-container {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 32px;
+    max-width: 550px;
+    margin: 0 auto;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    animation: fadeIn 0.3s ease;
+}
+
+/* Animasi ringan */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ====== JUDUL ====== */
+.lupa-tiket-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #002B5B; /* Navy Bea Cukai */
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.lupa-tiket-subtitle {
+    text-align: center;
+    color: #555;
+    margin-bottom: 25px;
+}
+
+/* ====== FORM ====== */
+.lupa-tiket-form .form-group {
+    margin-bottom: 18px;
+}
+
+.lupa-tiket-form label {
+    font-weight: 600;
+    margin-bottom: 6px;
+    display: block;
+    color: #003366;
+}
+
+.lupa-tiket-form input {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #d5d5d5;
+    border-radius: 8px;
+    font-size: 15px;
+    transition: 0.3s;
+}
+
+.lupa-tiket-form input:focus {
+    border-color: #002B5B;
+    box-shadow: 0 0 0 3px rgba(0, 43, 91, 0.15);
+}
+
+/* ====== BUTTON ====== */
+.lupa-tiket-btn {
+    background: #FFC107;
+    border: none;
+    width: 100%;
+    padding: 12px 0;
+    border-radius: 8px;
+    color: #002B5B;
+    font-weight: 700;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.lupa-tiket-btn:hover {
+    background: #ffca2c;
+}
+
+/* ====== ALERT / SUCCESS MESSAGE ====== */
+.lupa-tiket-alert {
+    margin-top: 15px;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.alert-success {
+    background: #d4edda;
+    color: #155724;
+}
+
+.alert-error {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+/* ====== RESPONSIVE ====== */
+@media (max-width: 576px) {
+    .lupa-tiket-container {
+        padding: 22px;
+    }
+    
+    .lupa-tiket-title {
+        font-size: 20px;
+    }
+}

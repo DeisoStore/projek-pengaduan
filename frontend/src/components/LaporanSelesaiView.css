@@ -1,0 +1,35 @@
+/* File: src/components/LaporanSelesaiView.css */
+
+.accordion-selesai .accordion-header button {
+    background-color: #f8f9fa; /* Warna header yang sedikit berbeda */
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    font-size: 0.95rem;
+}
+
+.header-content .kategori {
+    font-weight: 600;
+}
+
+.header-content .pelapor {
+    color: #6c757d;
+    margin-left: 10px;
+}
+
+.feedback-section {
+    background-color: #f0fff4; /* Latar belakang hijau lembut untuk feedback */
+    border-left: 4px solid #198754; /* Aksen garis hijau */
+    padding: 15px;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+.feedback-section h6 {
+    font-weight: bold;
+    color: #0c643b;
+}

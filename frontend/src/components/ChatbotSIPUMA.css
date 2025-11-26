@@ -1,0 +1,200 @@
+/* Variabel Warna untuk Konsistensi (Tema Bea Cukai) */
+:root {
+  --bc-navy: #002B5B;
+  --bc-navy-dark: #001f42;
+  --bc-gold: #FFC107;
+  --bc-gold-hover: #ffca2c;
+  --bg-light: #f4f7f6;
+  --white: #ffffff;
+  --shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --shadow-header: 0 4px 6px rgba(0, 43, 91, 0.2);
+}
+
+/* Container Utama - Memberikan efek kartu melayang */
+.sipuma-container {
+  background: var(--bg-light);
+  border-radius: 16px;
+  box-shadow: var(--shadow-soft);
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  font-family: 'Segoe UI', 'Roboto', sans-serif;
+  border: 1px solid #e0e0e0;
+}
+
+/* Header Biru Emas Khas Bea Cukai */
+.sipuma-header {
+  background: linear-gradient(135deg, var(--bc-navy) 0%, var(--bc-navy-dark) 100%);
+  color: var(--white);
+  padding: 18px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-bottom: 3px solid var(--bc-gold);
+  box-shadow: var(--shadow-header);
+  position: relative;
+  z-index: 10;
+}
+
+.sipuma-header h4 {
+  margin: 0;
+  font-weight: 700;
+  font-size: 1.1rem;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sipuma-header h4::before {
+  content: '';
+  display: block;
+  width: 10px;
+  height: 10px;
+  background-color: var(--bc-gold);
+  border-radius: 50%;
+}
+
+.sipuma-header p {
+  margin: 4px 0 0 20px;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 300;
+}
+
+/* Area Chat */
+.sipuma-chatbox {
+  flex-grow: 1;
+  padding: 20px;
+  overflow-y: auto;
+  background-color: #f8f9fb;
+  background-image: radial-gradient(#cfd8dc 1px, transparent 1px);
+  background-size: 20px 20px;
+  scroll-behavior: smooth;
+}
+
+/* Custom Scrollbar yang elegan */
+.sipuma-chatbox::-webkit-scrollbar {
+  width: 6px;
+}
+.sipuma-chatbox::-webkit-scrollbar-track {
+  background: transparent;
+}
+.sipuma-chatbox::-webkit-scrollbar-thumb {
+  background-color: #cbd5e1;
+  border-radius: 10px;
+}
+
+/* Pesan User & Bot Wrapper */
+.sipuma-message {
+  margin-bottom: 16px;
+  display: flex;
+  align-items: flex-end;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.sipuma-message.user {
+  justify-content: flex-end;
+}
+
+.sipuma-message.bot {
+  justify-content: flex-start;
+}
+
+/* Bubble Chat Styling */
+.bubble {
+  max-width: 70%;
+  padding: 12px 16px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  position: relative;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  white-space: pre-line;       /* Penting: teks \n menjadi baris baru */
+  word-wrap: break-word;       /* Pecah kata panjang agar tetap di bubble */
+  overflow-wrap: break-word;   /* Alternatif untuk browser lain */
+}
+
+/* Bubble User - Navy Blue */
+.sipuma-message.user .bubble {
+  background: var(--bc-navy);
+  color: white;
+  border-radius: 18px 18px 4px 18px;
+}
+
+/* Bubble Bot - Putih Bersih */
+.sipuma-message.bot .bubble {
+  background: var(--white);
+  color: #333;
+  border-radius: 18px 18px 18px 4px;
+  border: 1px solid #eaeff5;
+}
+
+/* Input Area Styling */
+.sipuma-input {
+  display: flex;
+  padding: 16px;
+  background: var(--white);
+  border-top: 1px solid #eef2f6;
+  gap: 10px;
+  align-items: center;
+}
+
+.sipuma-input input {
+  flex-grow: 1;
+  padding: 12px 16px;
+  border: 2px solid #e0e6ed;
+  border-radius: 50px;
+  outline: none;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  background: #fdfdfd;
+}
+
+.sipuma-input input:focus {
+  border-color: var(--bc-navy);
+  background: #fff;
+  box-shadow: 0 0 0 4px rgba(0, 43, 91, 0.1);
+}
+
+.sipuma-input input::placeholder {
+  color: #a0aec0;
+}
+
+/* Tombol Kirim */
+.sipuma-input button {
+  background: var(--bc-gold);
+  color: var(--bc-navy);
+  border: none;
+  border-radius: 50%;
+  width: 46px;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: bold;
+  box-shadow: 0 2px 8px rgba(255, 193, 7, 0.4);
+}
+
+.sipuma-input button::after {
+  content: '➤'; 
+  font-size: 1.2rem;
+  margin-left: 2px;
+}
+
+.sipuma-input button:hover {
+  background: var(--bc-gold-hover);
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(255, 193, 7, 0.6);
+}
+
+.sipuma-input button:active {
+  transform: scale(0.95);
+}

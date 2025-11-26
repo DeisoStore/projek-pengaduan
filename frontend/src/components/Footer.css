@@ -1,0 +1,86 @@
+/* Atur background utama dan warna teks default untuk SELURUH footer */
+.footer-beacukai {
+  /* Ini adalah warna biru dari SubFooter Anda sebelumnya */
+  background-color: #005598; 
+  color: #f8f9fa; /* Warna teks default (putih) */
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+/* Style untuk link bar di bagian atas */
+.footer-links-bar {
+  padding-bottom: 15px; /* Jarak dari link ke garis hr di bawahnya */
+}
+
+.footer-links-bar a {
+  color: white; 
+  text-decoration: none;
+  font-size: 1rem; /* Ukuran yang Anda minta */
+  letter-spacing: 0.5px; /* Teks merenggang */
+  transition: color 0.2s;
+}
+
+.footer-links-bar a:hover {
+  /* Hover kuning (pastikan Anda punya variabel --beacukai-yellow) */
+  color: var(--beacukai-yellow, #ffc107);
+  text-decoration: underline;
+}
+
+.footer-links-bar span {
+  color: white; 
+  margin: 0 15px; /* Jarak antar link */
+  font-size: 1rem; 
+}
+
+/* Style untuk garis pemisah (HR) agar tipis seperti di contoh */
+.footer-beacukai hr {
+  border-color: rgba(255, 255, 255, 0.2); /* Garis tipis putih transparan */
+  opacity: 1;
+}
+
+/* Garis hr spesifik di atas konten (jika perlu jarak beda) */
+.footer-hr-top {
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+/* Pastikan semua teks di dalam footer berwarna putih */
+.footer-beacukai h5 {
+  color: white;
+  font-weight: bold;
+}
+
+.footer-beacukai p {
+  color: white;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Ikon sosial media */
+.footer-beacukai .social-icons a {
+  color: white; /* Ikon warna putih */
+  transition: color 0.2s;
+}
+
+.footer-beacukai .social-icons a:hover {
+  color: var(--beacukai-yellow, #ffc107); /* Hover kuning */
+}
+
+
+/* Responsif untuk link bar di layar kecil */
+@media (max-width: 767px) {
+  .footer-links-bar a {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .footer-links-bar span {
+    display: none;
+  }
+
+  /* Pusatkan semua teks di mobile */
+  .footer-beacukai .text-md-start,
+  .footer-beacukai .text-md-end {
+    text-align: center !important;
+  }
+}

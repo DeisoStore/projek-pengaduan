@@ -1,0 +1,71 @@
+/* Styling untuk Header Halaman */
+.kegiatan-header {
+    background-color: #f8f9fa; /* Warna latar abu-abu muda */
+    padding: 3rem 2rem;
+    border-radius: 0.75rem;
+    margin-bottom: 3.5rem;
+}
+
+.kegiatan-header h1 {
+    font-weight: 700; /* Membuat judul lebih tebal */
+    color: #212529;
+}
+
+.kegiatan-header p {
+    font-size: 1.15rem;
+    color: #495057;
+}
+
+/* Row untuk menampung kartu, tambahkan animasi fade-in */
+.kegiatan-row {
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
+/* Keyframes untuk animasi fadeIn */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Styling Kartu Kegiatan */
+.kegiatan-card {
+    border: none; /* Hapus border bawaan */
+    border-radius: 0.75rem; /* Sudut lebih bulat */
+    overflow: hidden; /* Penting agar gambar tidak keluar dari radius */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transisi untuk hover */
+}
+
+/* Efek "Tidak Statis" saat di-hover */
+.kegiatan-card:hover {
+    transform: translateY(-8px); /* Efek terangkat */
+    box-shadow: 0 0.8rem 1.5rem rgba(0, 0, 0, 0.12) !important; /* Bayangan lebih kuat */
+}
+
+.kegiatan-card .card-img-top {
+    transition: transform 0.3s ease; /* Transisi untuk gambar */
+}
+
+/* Efek "Tidak Statis" (Zoom) pada gambar saat kartu di-hover */
+.kegiatan-card:hover .card-img-top {
+    transform: scale(1.05); /* Sedikit zoom pada gambar */
+}
+
+/* Styling Teks Deskripsi (Request: Justify) */
+.kegiatan-card .card-text {
+    text-align: justify; /* Membuat teks rata kiri-kanan */
+    color: #555;
+    font-size: 0.95rem;
+    /* Memberi tinggi minimum agar layout stabil */
+    min-height: 90px; 
+}
+
+.kegiatan-card .card-footer {
+    background-color: #ffffff; /* Footer putih bersih */
+    border-top: 1px solid #f1f1f1; /* Garis pemisah halus */
+}

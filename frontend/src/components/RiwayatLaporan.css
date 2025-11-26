@@ -1,0 +1,42 @@
+/* File: src/components/RiwayatLaporan.css */
+
+.accordion-header-custom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.accordion-header-custom .report-title {
+    font-weight: 600;
+    color: #343a40;
+}
+
+.accordion-header-custom .report-date {
+    font-size: 0.9em;
+    color: #6c757d;
+    margin-left: 15px;
+}
+
+.accordion-body .detail-section {
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.accordion-body .detail-section:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.accordion-body h6 {
+    font-weight: bold;
+    color: var(--beacukai-blue); /* Menggunakan warna biru Bea Cukai */
+    margin-bottom: 0.5rem;
+}
+
+.accordion-body p {
+    white-space: pre-wrap; /* Mempertahankan format teks (enter/paragraf) */
+    color: #495057;
+}
